@@ -35,3 +35,25 @@ window.addEventListener("scroll", (ev) => {
     window.scrollTo(0, 0);
   }, 2000);
 });
+
+document.body.addEventListener("click", (ev) => {
+  let target = ev.target;
+  let tag = target.localName;
+  if (tag === "p" || tag === "h1") {
+    console.log(target.innerHTML);
+    let pre = document.createElement("pre");
+    pre.innerHTML = target.innerHTML; //copy of the text inside
+    document.querySelector("main").append(pre);
+
+    console.log(target.outerHTML);
+    let elementString = target.outerHTML;
+    document.querySelector("main").innerHTML += elementString;
+    /* target.innerHTML = "hello"; */
+    /* target.outerHTML = "<h3>goodbye</h3>"; */
+
+    let htmlString = target.outerHTML;
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(htmlString, "text/html");
+    document.querySelector("main").append(doc.body.firstElementChild);
+  }
+});
