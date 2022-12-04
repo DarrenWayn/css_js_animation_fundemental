@@ -1,4 +1,40 @@
-#box {
-  background-color: blue;
-  padding: 1rem;
+/* #box { */
+/*   background-color: blue; */
+/*   padding: 1rem; */
+/* } */
+h1 {
+  cursor: pointer;
+  font-size: 2.5rem;
+  color: white;
+  text-shadow: 2px 2px 2px black;
+  background-color: hsla(90%, 30%, 70%, 0.5);
+}
+
+main {
+  transition: transform 1s ease-in;
+  position: relative;
+  z-index: 1;
+}
+
+main.up {
+  transform: translateY(-600px);
+}
+
+p::before {
+  content: attr(data-num);
+  font-size: 2.6rem;
+  line-height: 3rem;
+  height: 3rem;
+  width: 3rem;
+  text-align: center;
+  margin-right: 1rem;
+  display: inline-block;
+  transform: rotate(-28deg);
+  background-color: #666;
+  color: #eee;
+  border-radius: 50%;
+}
+
+p:nth-child(odd)::before {
+  transform: rotate(20deg);
 }
